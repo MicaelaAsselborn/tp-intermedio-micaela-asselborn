@@ -3,6 +3,10 @@ import express from 'express';
 import path from 'path';
 import 'dotenv/config';
 import { connectDB } from './config/database';
+import authRouter from './routes/auth.routes';
+import userRouter from './routes/user.routes';
+import { authenticate, authorize } from './middlewares/auth.middleware';
+
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -16,18 +20,11 @@ app.use(cors());
 // Middleware para servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Api visible para todo el mundo
-app.get('/public', (req, res) => {
-  res.json({
-    message: '¡Bienvenido a la veterinaria "Patitas Felices"!'
-  });
-});
+// Rutas PÚBLICAS
+app.use('/api/auth', authRouter); // Registro y login
 
-// Api administradores
-app.get('/admin', (req, res) => {
-  res.json({status: 'OK', message: 'Solo el administrador de la veterinaria puede entrar aca.'})
-});
-
+// Rutas PROTEGIDAS
+app.use('/api/users', authenticate, authorize(['admin']), userRouter); // CRUD de usuarios
 
 // Conectar a MongoDB y luego iniciar el servidor HTTP
 connectDB()

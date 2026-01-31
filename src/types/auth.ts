@@ -6,6 +6,7 @@ export interface JwtPayload {
 }
 
 export enum UserRole {
-  USER = 'user',
-  ADMIN = 'admin',
+  CLIENT = 'client',
+  VET = 'vet',
+  ADMIN = 'admin'
 }
