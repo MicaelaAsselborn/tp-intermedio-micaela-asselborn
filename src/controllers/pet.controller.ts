@@ -31,3 +31,22 @@ export const findPetById = async (req: Request, res: Response) => {
 		return res.status(500).json({ error: "Error al obtener la mascota" });
 	}
 };
+
+// createPet
+export const createPet = async (req: Request, res: Response) => {
+	try {
+		const { name, species, ownerId, vetId } = req.body;
+		const pet = await petService.createPet({
+			name,
+			species,
+			ownerId,
+			vetId,
+		});
+
+		return res
+			.status(201)
+			.json({ pet, message: "Mascota creada exitosamente" });
+	} catch (error) {
+		return res.status(500).json({ error: "Error al crear la mascota" });
+	}
+};

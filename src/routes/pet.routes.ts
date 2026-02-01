@@ -5,5 +5,6 @@ const router = Router();
 
 router.get("/", petController.findAllPets);
 router.get("/:id", petController.findPetById);
+router.post("/", petController.createPet);
 
 export default router;

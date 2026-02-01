@@ -28,3 +28,14 @@ export const findPetById = async (id: string): Promise<PetData | null> => {
 		vetId: pet.vetId,
 	};
 };
+
+// Crear mascota
+export const createPet = async (pet: Omit<PetData, "id">): Promise<PetData> => {
+	const newPet = new Pet({
+		name: pet.name,
+		species: pet.species as PetSpecies,
+		ownerId: pet.ownerId,
+		vetId: pet.vetId,
+	});
+	return await newPet.save();
+};

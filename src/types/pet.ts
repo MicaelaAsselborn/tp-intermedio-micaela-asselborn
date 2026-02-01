@@ -7,4 +7,5 @@ export enum PetSpecies {
 	BIRD = "bird",
 	LIZARD = "lizard",
 	TURTLE = "turtle",
+	OTHER = "other",
 }
