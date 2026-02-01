@@ -50,3 +50,22 @@ export const createPet = async (req: Request, res: Response) => {
 		return res.status(500).json({ error: "Error al crear la mascota" });
 	}
 };
+
+// updatePet
+export const updatePet = async (req: Request, res: Response) => {
+	try {
+		const id = req.params.id as string;
+		const updates = req.body;
+
+		const updatedPet = await petService.updatePet(id, updates);
+		if (!updatedPet) {
+			return res.status(404).json({ error: "Mascota no encontrada" });
+		}
+
+		return res
+			.status(200)
+			.json({ updatedPet, message: "Mascota actualizada exitosamente" });
+	} catch (error) {
+		res.status(500).json({ error: "Error al actualizar la mascota" });
+	}
+};

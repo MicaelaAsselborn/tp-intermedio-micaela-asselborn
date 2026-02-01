@@ -39,3 +39,28 @@ export const createPet = async (pet: Omit<PetData, "id">): Promise<PetData> => {
 	});
 	return await newPet.save();
 };
+
+// Actualizar mascotas
+export const updatePet = async (
+	id: string,
+	updates: Partial<Omit<PetData, "id">>,
+): Promise<PetData | null> => {
+	const pet = await Pet.findById(id);
+	if (!pet) return null;
+
+	// Actualizar campos permitidos
+	if (updates.name) pet.name = updates.name;
+	if (updates.species) pet.species = updates.species as PetSpecies;
+	if (updates.ownerId) pet.ownerId = updates.ownerId;
+	if (updates.vetId) pet.vetId = updates.vetId;
+
+	await pet.save();
+
+	return {
+		id: pet._id.toString(),
+		name: pet.name,
+		species: pet.species as PetSpecies,
+		ownerId: pet.ownerId,
+		vetId: pet.vetId,
+	};
+};
