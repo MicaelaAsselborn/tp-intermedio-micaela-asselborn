@@ -64,3 +64,11 @@ export const updatePet = async (
 		vetId: pet.vetId,
 	};
 };
+
+// Eliminar mascota
+export const deletePet = async (id: string): Promise<boolean> => {
+	const result = await Pet.findByIdAndDelete(id);
+	// !!result devuelve TRUE si lo encuentra y borra
+	// !!result devuelve FALSE si no lo encuentra
+	return !!result;
+};

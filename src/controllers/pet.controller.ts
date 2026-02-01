@@ -69,3 +69,19 @@ export const updatePet = async (req: Request, res: Response) => {
 		res.status(500).json({ error: "Error al actualizar la mascota" });
 	}
 };
+
+// deletePet
+export const deletePet = async (req: Request, res: Response) => {
+	try {
+		const id = req.params.id as string;
+		const deletedPet = await petService.deletePet(id);
+
+		if (!deletedPet) {
+			res.status(404).json({ error: "Mascota no encontrada" });
+		}
+
+		res.status(200).json({ message: "Mascota eliminada exitosamente" });
+	} catch (error) {
+		return res.status(500).json({ error: "Error al eliminar la mascota" });
+	}
+};
