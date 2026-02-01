@@ -34,8 +34,6 @@ const petSchema = new Schema<IPet>(
 	{ timestamps: true },
 );
 
-// PREGUNTA: El index va sobre valores unicos?
-
 export const Pet = mongoose.model<IPet>("mascotas", petSchema);
 
 export interface PetData {
