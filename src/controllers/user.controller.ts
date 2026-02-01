@@ -4,6 +4,7 @@ import { validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 import { UserRole } from "../types/auth";
 
+// findAllUsers
 export const findAllUsers = async (_req: Request, res: Response) => {
 	try {
 		const users = await userService.findAllUsers();
@@ -19,6 +20,7 @@ export const findAllUsers = async (_req: Request, res: Response) => {
 	}
 };
 
+// findUserByUsernameOrEmail
 export const findUserByUsernameOrEmail = async (
 	req: Request,
 	res: Response,
@@ -40,6 +42,7 @@ export const findUserByUsernameOrEmail = async (
 	}
 };
 
+//findUserById
 export const findUserById = async (req: Request, res: Response) => {
 	const id = req.params.id as string;
 	try {
@@ -54,6 +57,7 @@ export const findUserById = async (req: Request, res: Response) => {
 	}
 };
 
+// createUser
 export const createUser = async (req: Request, res: Response) => {
 	try {
 		const errors = validationResult(req);
@@ -92,6 +96,7 @@ export const createUser = async (req: Request, res: Response) => {
 	}
 };
 
+// updateUser
 export const updateUser = async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id as string;
@@ -117,6 +122,7 @@ export const updateUser = async (req: Request, res: Response) => {
 	}
 };
 
+// deleteUser
 export const deleteUser = async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id as string;

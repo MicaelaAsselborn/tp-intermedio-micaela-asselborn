@@ -38,7 +38,6 @@ const petSchema = new Schema<IPet>(
 
 export const Pet = mongoose.model<IPet>("mascotas", petSchema);
 
-// PREGUNTA: Por que PetData lleva id?
 export interface PetData {
 	id: string;
 	name: string;

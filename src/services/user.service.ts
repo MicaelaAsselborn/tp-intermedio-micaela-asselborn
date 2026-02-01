@@ -17,7 +17,7 @@ export const findAllUsers = async (): Promise<UserWithoutPassword[] | null> => {
 	}));
 };
 
-// Encontrar usuario
+// Encontrar usuario por usuario o email
 export const findUserByUsernameOrEmail = async (
 	username: string = "",
 	email: string = "",
@@ -50,6 +50,7 @@ export const findUserById = async (
 	};
 };
 
+// Encontrar usuario con contraseña
 export const findUserWithPassword = async (
 	email: string,
 ): Promise<UserData | null> => {

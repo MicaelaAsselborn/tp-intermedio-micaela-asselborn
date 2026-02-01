@@ -14,3 +14,17 @@ export const findAllPets = async (): Promise<PetData[] | null> => {
 		vetId: pet.vetId,
 	}));
 };
+
+// Encontrar mascota por ID
+export const findPetById = async (id: string): Promise<PetData | null> => {
+	const pet = await Pet.findById(id).lean();
+	if (!pet) return null;
+
+	return {
+		id: pet._id.toString(),
+		name: pet.name,
+		species: pet.species as PetSpecies,
+		ownerId: pet.ownerId,
+		vetId: pet.vetId,
+	};
+};
