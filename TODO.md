@@ -1,4 +1,3 @@
-- CRUD mascotas
 - CRUD historial
 - Documentacion en un README
 - Manejo de errores mediante middleware global

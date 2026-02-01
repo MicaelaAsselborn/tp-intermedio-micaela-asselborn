@@ -28,7 +28,7 @@ app.use("/api/auth", authRouter); // Registro y login
 
 // Rutas PROTEGIDAS
 app.use("/api/users", authenticate, authorize(["admin"]), userRouter); // CRUD de usuarios
-app.use("api/pets", authenticate, authorize(["vet"]), petRouter); // CRUD de mascotas
+app.use("/api/pets", authenticate, authorize(["vet"]), petRouter); // CRUD de mascotas
 
 // Conectar a MongoDB y luego iniciar el servidor HTTP
 connectDB().then(() => {
