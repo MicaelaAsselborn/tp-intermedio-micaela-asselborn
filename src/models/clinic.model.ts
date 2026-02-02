@@ -14,7 +14,6 @@ const clinicSchema = new Schema<IClinic>(
 		petId: {
 			type: String,
 			required: true,
-			unique: true,
 			trim: true,
 		},
 		vetId: {
