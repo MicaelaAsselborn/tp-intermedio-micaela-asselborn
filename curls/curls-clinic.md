@@ -35,6 +35,18 @@ curl -X POST http://localhost:8000/api/clinic \
 }'
 ```
 
+## Actualizar consulta
+
+```bash
+curl -X PATCH http://localhost:8000/api/clinic/CONSULT_ID \
+ -H "Content-Type: application/json" \
+ -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+ -d '{
+"consult": "Descripción actualizada de la consulta",
+"treatment": "Tratamiento actualizado"
+}'
+```
+
 ## Borrar consulta
 
 ```bash
@@ -45,6 +57,6 @@ curl -X DELETE http://localhost:8000/api/clinic/CONSULT_ID \
 ## Notas
 
 - Todas las operaciones requieren autenticación como veterinario.
-- Las consultas clínicas no se pueden modificar una vez creadas (no hay endpoint PUT).
+- Las consultas clínicas pueden ser modificadas usando PATCH.
 - petId y vetId deben ser IDs válidos de mascotas y veterinarios existentes.
 - consult y treatment son campos de texto obligatorios.
