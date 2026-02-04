@@ -55,6 +55,28 @@ export const createConsult = async (req: Request, res: Response) => {
 	}
 };
 
+// updateConsult
+export const updateConsult = async (req: Request, res: Response) => {
+	try {
+		const id = req.params.id as string;
+		const updates = req.body;
+
+		const updatedConsult = await clinicService.updateConsult(id, updates);
+		if (!updatedConsult) {
+			return res.status(404).json({ error: "Consulta no encontrada" });
+		}
+
+		return res
+			.status(200)
+			.json({
+				updatedConsult,
+				message: "Consulta actualizada exitosamente",
+			});
+	} catch (error) {
+		res.status(500).json({ error: "Error al actualizar la consulta" });
+	}
+};
+
 // deleteConsult
 export const deleteConsult = async (req: Request, res: Response) => {
 	try {

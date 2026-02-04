@@ -44,6 +44,31 @@ export const createConsult = async (
 	return await newConsult.save();
 };
 
+// Actualizar consulta
+export const updateConsult = async (
+	id: string,
+	updates: Partial<Omit<ClinicData, "id">>,
+): Promise<ClinicData | null> => {
+	const updatedConsult = await Consult.findById(id);
+	if (!updatedConsult) return null;
+
+	// Actualizar campos permitidos
+	if (updates.petId) updatedConsult.petId = updates.petId;
+	if (updates.vetId) updatedConsult.vetId = updates.vetId;
+	if (updates.consult) updatedConsult.consult = updates.consult;
+	if (updates.treatment) updatedConsult.treatment = updates.treatment;
+
+	await updatedConsult?.save();
+
+	return {
+		id: updatedConsult._id.toString(),
+		petId: updatedConsult.petId,
+		vetId: updatedConsult.vetId,
+		consult: updatedConsult.consult,
+		treatment: updatedConsult.treatment,
+	};
+};
+
 // Eliminar consulta
 export const deleteConsult = async (id: string): Promise<boolean> => {
 	const result = await Consult.findByIdAndDelete(id);

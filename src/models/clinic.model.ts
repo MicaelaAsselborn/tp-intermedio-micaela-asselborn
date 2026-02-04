@@ -6,7 +6,7 @@ export interface IClinic extends Document {
 	consult: string;
 	treatment: string;
 	createdOn: Date;
-	// Este objeto no tiene UpdatedOn porque no deberia poder modificarse un historial clinico.
+	updatedOn: Date;
 }
 
 const clinicSchema = new Schema<IClinic>(

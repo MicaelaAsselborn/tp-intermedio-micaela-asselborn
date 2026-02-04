@@ -1,2 +1,0 @@
-- Manejo de errores mediante middleware global
-- Colección de pruebas (Postman o Thunder Client).
