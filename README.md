@@ -65,10 +65,11 @@ src/
 
 ### Consultas Clínicas (Solo Veterinarios)
 
-- `GET /api/pets` - Obtener todas las consultas
-- `GET /api/pets/:id` - Obtener consulta por ID
-- `POST /api/pets` - Crear nueva consulta
-- `DELETE /api/pets/:id` - Eliminar consulta
+- `GET /api/clinic` - Obtener todas las consultas
+- `GET /api/clinic/:id` - Obtener consulta por ID
+- `POST /api/clinic` - Crear nueva consulta
+- `PUT /api/clinic/:id` - Actualizar consulta
+- `DELETE /api/clinic/:id` - Eliminar consulta
 
 ## 🛠️ Instalación y Configuración
 
@@ -97,7 +98,7 @@ npm install
 
 ```env
 PORT=8000
-MONGODB_URI=mongodb://localhost:27017/veterinary-clinic
+MONGODB_URI=mongodb://localhost:27017/veterinaria_patitas_felices
 JWT_SECRET=tu_clave_secreta_jwt_muy_segura
 ```
 
@@ -137,7 +138,7 @@ Para probar la API, puedes usar los archivos de curl incluidos en la carpeta `cu
 - `curls-auth.md` - Comandos para autenticación
 - `curls-users.md` - CRUD de usuarios
 - `curls-pets.md` - CRUD de mascotas
-- `curls-clinic.md` - CRD de consultas clínicas
+- `curls-clinic.md` - CRUD de consultas clínicas
 
 También puedes usar herramientas como Postman, Thunder Client o Insomnia.
 
